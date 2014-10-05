@@ -1,5 +1,8 @@
 <?php
 
+// @issue
+// subpathauto make first level /<ktopic>/goto become /node/[nid]/goto, but /<ktopic>/goto still work.
+
 /**
  * Implements hook_views_api().
  */
@@ -10,7 +13,7 @@ function affilink_views_api() {
   );
 }
 
-// ----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // Redirect
 
 /**
