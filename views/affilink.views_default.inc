@@ -15,12 +15,17 @@ function affilink_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '25';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'rid' => 'rid',
@@ -49,6 +54,16 @@ function affilink_views_default_views() {
   $handler->display->display_options['fields']['redirect']['table'] = 'redirect';
   $handler->display->display_options['fields']['redirect']['field'] = 'redirect';
   $handler->display->display_options['fields']['redirect']['absolute'] = 0;
+  /* Field: Redirect: Clicks */
+  $handler->display->display_options['fields']['count']['id'] = 'count';
+  $handler->display->display_options['fields']['count']['table'] = 'redirect';
+  $handler->display->display_options['fields']['count']['field'] = 'count';
+  /* Field: Redirect: Last accessed date */
+  $handler->display->display_options['fields']['access']['id'] = 'access';
+  $handler->display->display_options['fields']['access']['table'] = 'redirect';
+  $handler->display->display_options['fields']['access']['field'] = 'access';
+  $handler->display->display_options['fields']['access']['date_format'] = 'time ago';
+  $handler->display->display_options['fields']['access']['second_date_format'] = 'long';
   /* Field: Redirect: Operations */
   $handler->display->display_options['fields']['operations']['id'] = 'operations';
   $handler->display->display_options['fields']['operations']['table'] = 'redirect';
@@ -82,6 +97,7 @@ function affilink_views_default_views() {
       'label' => 'Redirect: Entity ID',
     ),
   );
+
 
   $export['affilink_node'] = $view;
 
