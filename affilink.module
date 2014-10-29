@@ -4,6 +4,15 @@
 // subpathauto make first level /<ktopic>/goto become /node/[nid]/goto, but /<ktopic>/goto still work.
 
 /**
+ *  Implements hook_ctools_plugin_directory().
+ */
+function affilink_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools') {
+    return $owner . '/' . $plugin_type;
+  }
+}
+
+/**
  * Implements hook_views_api().
  */
 function affilink_views_api() {
